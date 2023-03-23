@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <!--Font awe some library to use Icons as fonts-->
+  <link rel="stylesheet" href="./css/all.min.css">
+  <!--normalize file to render all elements-->
+  <link rel="stylesheet" href="./css/normalize.css">
+  <!--css style file of game-->
+  <link rel="stylesheet" href="./css/master.css">
+  <!-- main javascript file of game-->
+  <script src="./js/main.js" defer></script>
+</head>
+<body>
+  <!--virtual body overLay-->
+  <div class="virtual-overlay"></div>
+
+  <div class="popups-container">
+    <div class="center-popups">
+      <!--welcome popup [first popup]-->
+      <div class="welcome-popup">
+        <p class="notValidName">Please Enter Valid Number..!!</p>
+        <h3>Memory Game</h3>
+        <input type="text" maxlength="20" placeholder="Enter your Name...">
+        <div class="game-level">
+          <label for="">Choose difficulty</label>
+          <select name="" id="groupLevel">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="diffcult">Diffcult</option>
+          </select>
+        </div>
+        <p class="game-info-text">
+          When Press <span>ok</span> The All Cards Will Show For <span>5</span> Seconds
+        </p>
+        <button class="confirm-welcme-popup">OK</button>
+      </div>
+
+      <!--Game Success & faild Popup -->
+      <!-- center-popups-active -->
+      <div class="after-finish-popup">
+        <!--H3 created by js-->
+        <p>Do you Want To Play again..!!</p>
+        <div class="after-finish-popup-buttons">
+          <button id="repeatGame" class="game-ok-confirm-popup">OK</button>
+          <button id="cancelGame" class="game-cancel-confirm-popup">Cancel</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!--the popups of up of the page-->
+    <div class="up-popups">
+      <div class="go-way">go ahead ✌</div>
+      <div class="correct-popup"><i class="fa-solid fa-check"></i></div>
+      <div class="incorrect-popup"><i class="fa-regular fa-circle-xmark"></i></div>
+      <div class="great-memory-popup">You Have a Great Memory 😎👏</div>
+      <div class="weak-memory-popup">You Have a Weak Memory 😢😢</div>
+      <div class="reOredring-popup">Changing Order Of Crads...</div>
+      <div class="playAgain-msg-popup">Game Will Start Now</div>
+      <div class="take-alook">Take a Look 🤦‍♀️</div>
+      <!--correct & incorrect sound-->
+      <div class="correct-incorrect-sounds">
+        <audio class="correct-sound" src="./sounds/correct-2-46134.mp3"></audio>
+        <audio class="incorrect-sound" src="./sounds/negative_beeps-6008.mp3"></audio>
+      </div>
+    </div>
+  </div>
+  <!----------End POPUPS----------->
+
+  <div class="container">
+    <div class="game-container">
+      <div class="gamer-infoAndScore">
+        <div class="gamer-info">
+          <div class="game-level">Game Level: <span>...</span></div>
+          <div class="gamer-name">Gamer Name: <span>...</span></div>
+        </div>
+        <div class="gamer-score">
+          <div class="success-tries">Success Times: <span>0</span></div>
+          <div class="wrong-tries">Wrong Times: <span>0</span></div>
+        </div>
+      </div>
+      <div class="cards-container">
+        <div data-id="php" class="card">
+          <div class="front"><i class="fa-brands fa-php"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="php" class="card">
+          <div class="front"><i class="fa-brands fa-php"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="html" class="card">
+          <div class="front"><i class="fa-brands fa-html5"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="html" class="card">
+          <div class="front"><i class="fa-brands fa-html5"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="js" class="card">
+          <div class="front"><i class="fa-brands fa-square-js"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="js" class="card">
+          <div class="front"><i class="fa-brands fa-square-js"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="java" class="card">
+          <div class="front"><i class="fa-brands fa-java"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="java" class="card">
+          <div class="front"><i class="fa-brands fa-java"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="react" class="card">
+          <div class="front"><i class="fa-brands fa-react"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="react" class="card">
+          <div class="front"><i class="fa-brands fa-react"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="boots" class="card">
+          <div class="front"><i class="fa-brands fa-bootstrap"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="boots" class="card">
+          <div class="front"><i class="fa-brands fa-bootstrap"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="ang" class="card">
+          <div class="front"><i class="fa-brands fa-angular"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="ang" class="card">
+          <div class="front"><i class="fa-brands fa-angular"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="vue" class="card">
+          <div class="front"><i class="fa-brands fa-vuejs"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="vue" class="card">
+          <div class="front"><i class="fa-brands fa-vuejs"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="vue" class="card">
+          <div class="front"><i class="fa-brands fa-vuejs"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="vue" class="card">
+          <div class="front"><i class="fa-brands fa-vuejs"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="node" class="card">
+          <div class="front"><i class="fa-brands fa-node"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="node" class="card">
+          <div class="front"><i class="fa-brands fa-node"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="node" class="card">
+          <div class="front"><i class="fa-brands fa-node"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="node" class="card">
+          <div class="front"><i class="fa-brands fa-node"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="C" class="card">
+          <div class="front"><i class="fa-solid fa-c"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="C" class="card">
+          <div class="front"><i class="fa-solid fa-c"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="face" class="card">
+          <div class="front"><i class="fa-brands fa-facebook"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="face" class="card">
+          <div class="front"><i class="fa-brands fa-facebook"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="insta" class="card">
+          <div class="front"><i class="fa-brands fa-instagram"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="insta" class="card">
+          <div class="front"><i class="fa-brands fa-instagram"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="twitter" class="card">
+          <div class="front"><i class="fa-brands fa-twitter"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="twitter" class="card">
+          <div class="front"><i class="fa-brands fa-twitter"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="linkedIN" class="card">
+          <div class="front"><i class="fa-brands fa-linkedin"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="linkedIN" class="card">
+          <div class="front"><i class="fa-brands fa-linkedin"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="snap" class="card">
+          <div class="front"><i class="fa-brands fa-square-snapchat"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="snap" class="card">
+          <div class="front"><i class="fa-brands fa-square-snapchat"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="gPlay" class="card">
+          <div class="front"><i class="fa-brands fa-google-play"></i></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="gPlay" class="card">
+          <div class="front"><i class="fa-brands fa-google-play"></i></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="gPlay" class="card">
+          <div class="front"><i class="fa-brands fa-google-play"></i></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="gPlay" class="card">
+          <div class="front"><i class="fa-brands fa-google-play"></i></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="gmail" class="card">
+          <div class="front"><i class="fa-brands fa-google"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        <div data-id="gmail" class="card">
+          <div class="front"><i class="fa-brands fa-google"></i></div>
+          <div class="back"><i class="fa-solid fa-question"></i></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
